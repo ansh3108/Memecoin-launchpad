@@ -40,7 +40,7 @@ contract Factory {
 
     function getCost(uint256 _sold) public pure returns (uint256) {
         uint256 floor = 0.0001 ether;
-        uint256 step = 0.0001 ether; f
+        uint256 step = 0.0001 ether;
         uint256 increment = 10000 ether;
 
         uint256 cost = (step * (_sold / increment)) + floor;
