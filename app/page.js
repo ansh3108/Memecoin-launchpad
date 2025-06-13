@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { use, useEffect, useState } from "react"
 import { ethers } from 'ethers'
 
 // Components
@@ -15,11 +15,24 @@ import config from "./config.json"
 import images from "./images.json"
 
 export default function Home() {
+  const [provider, setProvider] = useState(null);
+  const [account, setAccount] = useState(null);
+
+
+  async function loadBlockchainData() {
+    const provider = new ethers.BrowserProvider(window.ethereum);
+    setProvider(provider);
+
+  }
+
+  useEffect(() => {
+    loadBlockchainData()
+  }, [])
 
   return (
     <div className="page">
+      <Header account={account} setAccount={setAccount}/>
 
-      <h1 style={{ padding: "1em" }}>fun.pump</h1>
 
     </div>
   );
